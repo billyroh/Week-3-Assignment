@@ -7,9 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="appView" destination="i5M-Pr-FkT" id="x3g-3m-Ukb"/>
-                <outlet property="headlinePan" destination="oVR-cj-hcW" id="eQf-fW-Hye"/>
-                <outlet property="headlineView" destination="FHQ-cD-q5N" id="vzU-Os-HYL"/>
-                <outlet property="mainView" destination="UlL-Mw-uLa" id="ZPV-YL-tTy"/>
+                <outlet property="headlinePan" destination="fTb-r5-IeG" id="OMb-U6-j09"/>
+                <outlet property="headlineView" destination="28X-nb-iUH" id="ovp-sd-mAH"/>
+                <outlet property="mainView" destination="dlk-zC-dzg" id="Cz0-aL-075"/>
                 <outlet property="storyStripScrollView" destination="vFK-cj-02W" id="4ak-I2-htV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,20 +23,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" id="UlL-Mw-uLa">
-                    <rect key="frame" x="-20" y="-1" width="360" height="568"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" id="dlk-zC-dzg">
+                    <rect key="frame" x="-583" y="-20" width="1485" height="608"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headline" id="FHQ-cD-q5N">
-                            <rect key="frame" x="20" y="0.0" width="320" height="568"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headline" id="28X-nb-iUH">
+                            <rect key="frame" x="583" y="20" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <gestureRecognizers/>
                             <connections>
-                                <outletCollection property="gestureRecognizers" destination="oVR-cj-hcW" appends="YES" id="6sb-Pb-L8W"/>
+                                <outletCollection property="gestureRecognizers" destination="fTb-r5-IeG" appends="YES" id="0BC-Cz-uah"/>
                             </connections>
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" id="vFK-cj-02W">
-                            <rect key="frame" x="20" y="314" width="1445" height="254"/>
+                            <rect key="frame" x="583" y="334" width="1445" height="254"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news" id="iIp-t8-ORq">
@@ -46,16 +46,15 @@
                             </subviews>
                         </scrollView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <panGestureRecognizer minimumNumberOfTouches="1" id="oVR-cj-hcW">
+        <panGestureRecognizer minimumNumberOfTouches="1" id="fTb-r5-IeG">
             <connections>
-                <action selector="onHeadlinePan:" destination="-1" id="TFs-Zx-oJt"/>
+                <action selector="onHeadlinePan:" destination="-1" id="m7F-GF-CST"/>
             </connections>
         </panGestureRecognizer>
     </objects>
