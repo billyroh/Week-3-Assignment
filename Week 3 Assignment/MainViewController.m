@@ -13,8 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 - (IBAction)onHeadlinePan:(id)sender;
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *headlinePan;
-@property CGPoint startLocation;
 @property (strong, nonatomic) IBOutlet UIView *appView;
+@property (weak, nonatomic) IBOutlet UIImageView *headlineView;
+
+@property CGPoint startLocation;
+@property CGPoint lastChangedLocation;
 
 @end
 
@@ -35,6 +38,10 @@
     // Do any additional setup after loading the view from its nib.
     
     self.storyStripScrollView.contentSize = CGSizeMake(2570, 253);
+    
+    self.headlineView.userInteractionEnabled = YES;
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,20 +50,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (IBAction)onHeadlinePan:(id)sender {
-    NSLog(@"panning");
     if (self.headlinePan.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"starting");
         self.startLocation = [self.headlinePan locationInView:self.appView];
+        self.lastChangedLocation = self.startLocation;
+    } else if (self.headlinePan.state == UIGestureRecognizerStateChanged) {
+        self.mainView.center = CGPointMake(self.mainView.center.x, self.mainView.center.y + ([self.headlinePan locationInView:self.appView].y - self.lastChangedLocation.y));
+        self.lastChangedLocation = [self.headlinePan locationInView:self.appView];
     } else if (self.headlinePan.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"ended");
         // Swiped down
         if ([self.headlinePan locationInView:self.appView].y > self.startLocation.y) {
-            self.mainView.center = CGPointMake(self.mainView.center.x, 300);
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:0 animations:^{
+                self.mainView.center = CGPointMake(self.mainView.center.x, 800);
+            } completion:nil];
+//            [UIView animateWithDuration:0.5 animations:^{
+//                self.mainView.center = CGPointMake(self.mainView.center.x, 800);
+//            }];
             
         // Swiped up
         } else if ([self.headlinePan locationInView:self.appView].y < self.startLocation.y) {
-            
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:3 options:0 animations:^{
+                self.mainView.center = CGPointMake(self.mainView.center.x, 284);
+            } completion:nil];
+//            [UIView animateWithDuration:0.5 animations:^{
+//                self.mainView.center = CGPointMake(self.mainView.center.x, 284);
+//            }];
         // Nothing
         } else {
             
